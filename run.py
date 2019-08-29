@@ -62,6 +62,9 @@ class GuiPart:
         portslist = list(serial.tools.list_ports.comports())
         self.devicelist = []
         self.addresslist = []
+        if len(portslist)==0:
+            print("No Serial Devices detected!")
+            root.destroy()
         for port in portslist:
             self.devicelist.append(port.device+" "+port.description)
             self.addresslist.append(port.device)
